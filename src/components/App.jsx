@@ -28,8 +28,21 @@ class App extends Component {
     }));
   };
 
+  // checkInputName = name => {
+  //   this.state.contacts.forEach(contact => {
+  //     if (contact.name === name) {
+  //       alert(`${name} is alredy in contacts`);
+  //       return true;
+  //     } else {
+  //       return addContact();
+  //     }
+  //   });
+  // };
+
   onDeleteContact = id => {
-    console.log('deleting contact in', id);
+    this.setState(prevState => ({
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    }));
   };
   onFilterList = event => {
     this.setState({ filter: event.currentTarget.value });
