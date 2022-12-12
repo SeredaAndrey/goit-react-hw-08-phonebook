@@ -4,7 +4,7 @@ import shortid from 'shortid';
 import ContactForm from './contactform/contactform';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
-import { AppContainer, AppTitle } from './app.styled';
+import { AppContainer, AppTitle, ContactTitle } from './app.styled';
 
 class App extends Component {
   static defaultProps = {
@@ -64,7 +64,7 @@ class App extends Component {
       <AppContainer>
         <AppTitle>Phonebook</AppTitle>
         <ContactForm onSubmit={this.addContact} />
-        <h2>Contacts</h2>
+        <ContactTitle>Contacts</ContactTitle>
         <Filter filter={filter} handleChangeFilter={this.onFilterList} />
         <ContactList
           contacts={visibleContacts}

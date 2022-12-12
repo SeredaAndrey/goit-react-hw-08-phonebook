@@ -1,17 +1,18 @@
 import shortid from 'shortid';
+import { ContactFilterForm, FilterInputForm } from './filter.styled';
 
 const Filter = ({ filter, handleChangeFilter }) => {
   const searchFormId = shortid.generate();
   return (
-    <label htmlFor={searchFormId}>
+    <ContactFilterForm htmlFor={searchFormId}>
       Find contacts by Name
-      <input
+      <FilterInputForm
         type="text"
         id={searchFormId}
         value={filter}
         onChange={handleChangeFilter}
       />
-    </label>
+    </ContactFilterForm>
   );
 };
 

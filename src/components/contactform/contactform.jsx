@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
-import { ContactInputForm, LabelForm } from './contactform.styled';
+import {
+  ContactInputForm,
+  LabelForm,
+  InputForm,
+  AddButon,
+} from './contactform.styled';
 
 class ContactForm extends Component {
   state = { name: '', number: '' };
@@ -27,7 +32,7 @@ class ContactForm extends Component {
       <ContactInputForm onSubmit={this.handleSubmit}>
         <LabelForm htmlFor={this.nameInputId}>
           Name
-          <input
+          <InputForm
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -40,7 +45,7 @@ class ContactForm extends Component {
         </LabelForm>
         <LabelForm htmlFor={this.numberInputId}>
           Number
-          <input
+          <InputForm
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -51,7 +56,7 @@ class ContactForm extends Component {
             id={this.numberInputId}
           />
         </LabelForm>
-        <button type="submit">Add contact</button>
+        <AddButon type="submit">Add contact</AddButon>
       </ContactInputForm>
     );
   }

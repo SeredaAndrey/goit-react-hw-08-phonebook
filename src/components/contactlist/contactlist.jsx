@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  ContactItemContainer,
+  ContactName,
+  ContactTelephone,
+  DelButon,
+} from './contactlist.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (
@@ -20,12 +26,12 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 export default ContactList;
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
-    <li key={id}>
-      <h3>{name}:</h3>
-      <p>{number}</p>
-      <button type="button" onClick={() => onDeleteContact(id)}>
+    <ContactItemContainer key={id}>
+      <ContactName>{name}:</ContactName>
+      <ContactTelephone>{number}</ContactTelephone>
+      <DelButon type="button" onClick={() => onDeleteContact(id)}>
         Delete contact
-      </button>
-    </li>
+      </DelButon>
+    </ContactItemContainer>
   );
 };
