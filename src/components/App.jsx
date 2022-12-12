@@ -4,6 +4,7 @@ import shortid from 'shortid';
 import ContactForm from './contactform/contactform';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
+import { AppContainer, AppTitle } from './app.styled';
 
 class App extends Component {
   static defaultProps = {
@@ -22,22 +23,21 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const contact = { id: shortid.generate(), name, number };
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    let flag = false;
+    for (const contact of this.state.contacts) {
+      if (contact.name === name) {
+        alert(`${name} is alredy in contacts`);
+        flag = true;
+        break;
+      }
+    }
+    if (!flag) {
+      const contact = { id: shortid.generate(), name, number };
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, contact],
+      }));
+    }
   };
-
-  // checkInputName = name => {
-  //   this.state.contacts.forEach(contact => {
-  //     if (contact.name === name) {
-  //       alert(`${name} is alredy in contacts`);
-  //       return true;
-  //     } else {
-  //       return addContact();
-  //     }
-  //   });
-  // };
 
   onDeleteContact = id => {
     this.setState(prevState => ({
@@ -61,8 +61,8 @@ class App extends Component {
     const visibleContacts = this.getVisbleContacts();
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <AppContainer>
+        <AppTitle>Phonebook</AppTitle>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter filter={filter} handleChangeFilter={this.onFilterList} />
@@ -70,7 +70,7 @@ class App extends Component {
           contacts={visibleContacts}
           onDeleteContact={this.onDeleteContact}
         />
-      </div>
+      </AppContainer>
     );
   }
 }
