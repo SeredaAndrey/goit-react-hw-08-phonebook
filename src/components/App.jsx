@@ -17,8 +17,6 @@ class App extends Component {
   };
   state = {
     contacts: this.props.initialContacts,
-    name: '',
-    number: '',
     filter: '',
   };
 
