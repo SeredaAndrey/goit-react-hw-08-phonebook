@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ContactItemContainer,
   ContactName,
@@ -19,3 +21,9 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
 };
 
 export default ContactItem;
+
+ContactItem.prototype = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};

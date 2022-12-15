@@ -1,4 +1,6 @@
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
+
 import { ContactFilterForm, FilterInputForm } from './filter.styled';
 
 const Filter = ({ filter, handleChangeFilter }) => {
@@ -17,3 +19,7 @@ const Filter = ({ filter, handleChangeFilter }) => {
 };
 
 export default Filter;
+
+Filter.prototype = {
+  filter: PropTypes.string.isRequired,
+};
