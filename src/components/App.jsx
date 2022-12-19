@@ -6,19 +6,27 @@ import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
 import { AppContainer, AppTitle, ContactTitle } from './app.styled';
 
+const LS_KEY = 'lokalStorageKey';
+
 class App extends Component {
-  static defaultProps = {
-    initialContacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
-  };
   state = {
-    contacts: this.props.initialContacts,
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const loadVariable = JSON.parse(localStorage.getItem(LS_KEY));
+    if (loadVariable) {
+      this.setState({ contacts: loadVariable });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      const writeVariable = JSON.stringify(this.state.contacts);
+      localStorage.setItem(LS_KEY, writeVariable);
+    }
+  }
 
   addContact = ({ name, number }) => {
     let flag = false;
@@ -64,10 +72,12 @@ class App extends Component {
         <ContactForm onSubmit={this.addContact} />
         <ContactTitle>Contacts</ContactTitle>
         <Filter filter={filter} handleChangeFilter={this.onFilterList} />
-        <ContactList
-          contacts={visibleContacts}
-          onDeleteContact={this.onDeleteContact}
-        />
+        {this.state && (
+          <ContactList
+            contacts={visibleContacts}
+            onDeleteContact={this.onDeleteContact}
+          />
+        )}
       </AppContainer>
     );
   }
