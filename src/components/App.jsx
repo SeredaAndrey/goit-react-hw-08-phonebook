@@ -1,27 +1,15 @@
-import shortid from 'shortid';
-
 import ContactForm from './contactform/contactform';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
 import { AppContainer, AppTitle, ContactTitle } from './app.styled';
-import { useState, useEffect } from 'react';
-
-const LS_KEY = 'localstorage_key_phonebook';
-
-const getLocalStorage = () => {
-  const data = JSON.parse(localStorage.getItem(LS_KEY));
-  return data;
-};
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, getFilterContent } from 'redux/selectors';
+import { deleteContact, addContact } from 'redux/contactsSlice';
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return getLocalStorage() ? getLocalStorage() : [];
-  });
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem(LS_KEY, JSON.stringify(contacts));
-  }, [contacts]);
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilterContent);
+  const contacts = useSelector(getContacts);
 
   const getVisbleContacts = () => {
     if (contacts.length !== 0) {
@@ -31,9 +19,9 @@ export default function App() {
     }
   };
 
-  const addContact = (name, number) => {
+  const addHandleContact = (name, number) => {
     let flag = false;
-    if (contacts) {
+    if (contacts && contacts !== []) {
       for (const contact of contacts) {
         if (contact.name === name) {
           alert(`${name} is alredy in contacts`);
@@ -43,24 +31,20 @@ export default function App() {
       }
     }
     if (!flag) {
-      setContacts([...contacts, { id: shortid.generate(), name, number }]);
+      dispatch(addContact({ name, number }));
     }
   };
 
-  const onFilterList = event => {
-    setFilter(event.currentTarget.value);
-  };
-
   const onDeleteContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
+    dispatch(deleteContact({ id }));
   };
 
   return (
     <AppContainer>
       <AppTitle>Phonebook</AppTitle>
-      <ContactForm onSubmit={addContact} />
+      <ContactForm onSubmit={addHandleContact} />
       <ContactTitle>Contacts</ContactTitle>
-      <Filter filter={filter} handleChangeFilter={onFilterList} />
+      <Filter />
       {contacts.length !== 0 && (
         <ContactList
           contacts={getVisbleContacts()}

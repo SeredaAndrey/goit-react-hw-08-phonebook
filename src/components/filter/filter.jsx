@@ -1,10 +1,20 @@
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ContactFilterForm, FilterInputForm } from './filter.styled';
+import { setFilterContent } from 'redux/filterSlice';
+import { getFilterContent } from 'redux/selectors';
 
-const Filter = ({ filter, handleChangeFilter }) => {
+const Filter = () => {
   const searchFormId = shortid.generate();
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilterContent);
+
+  const handleChangefilterContent = event => {
+    dispatch(setFilterContent(event.target.value));
+  };
+
   return (
     <ContactFilterForm htmlFor={searchFormId}>
       Find contacts by Name
@@ -12,7 +22,7 @@ const Filter = ({ filter, handleChangeFilter }) => {
         type="text"
         id={searchFormId}
         value={filter}
-        onChange={handleChangeFilter}
+        onChange={handleChangefilterContent}
       />
     </ContactFilterForm>
   );
