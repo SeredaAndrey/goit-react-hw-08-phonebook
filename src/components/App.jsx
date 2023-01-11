@@ -4,16 +4,21 @@ import ContactList from './contactlist/contactlist';
 import { AppContainer, AppTitle, ContactTitle } from './app.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilterContent } from 'redux/selectors';
-import { deleteContact, addContact } from 'redux/contactsSlice';
+import { useEffect } from 'react';
+import { fetchContacts, deleteContact, addContact } from 'redux/operations';
 
 export default function App() {
   const dispatch = useDispatch();
   const filter = useSelector(getFilterContent);
-  const contacts = useSelector(getContacts);
+  const { items, isLoading, error } = useSelector(getContacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const getVisbleContacts = () => {
-    if (contacts.length !== 0) {
-      return contacts.filter(contact =>
+    if (items.length !== 0) {
+      return items.filter(contact =>
         contact.name.toLowerCase().includes(filter.toLowerCase())
       );
     }
@@ -21,8 +26,8 @@ export default function App() {
 
   const addHandleContact = (name, number) => {
     let flag = false;
-    if (contacts && contacts !== []) {
-      for (const contact of contacts) {
+    if (items && items !== []) {
+      for (const contact of items) {
         if (contact.name === name) {
           alert(`${name} is alredy in contacts`);
           flag = true;
@@ -36,7 +41,7 @@ export default function App() {
   };
 
   const onDeleteContact = id => {
-    dispatch(deleteContact({ id }));
+    dispatch(deleteContact(id));
   };
 
   return (
@@ -45,7 +50,9 @@ export default function App() {
       <ContactForm onSubmit={addHandleContact} />
       <ContactTitle>Contacts</ContactTitle>
       <Filter />
-      {contacts.length !== 0 && (
+      {isLoading && <p>Loading contacts...</p>}
+      {error && <p>{error}</p>}
+      {items.length !== 0 && (
         <ContactList
           contacts={getVisbleContacts()}
           onDeleteContact={onDeleteContact}
