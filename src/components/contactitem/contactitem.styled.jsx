@@ -7,9 +7,9 @@ export const ContactItemContainer = styled.li`
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
-  padding-right: ${p => p.theme.space[6]};
+  padding-right: ${p => p.theme.space[5]};
   padding-bottom: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[6]};
+  padding-left: ${p => p.theme.space[5]};
 
   border-radius: ${p => p.theme.radii.ml};
 
@@ -25,6 +25,19 @@ export const ContactItemContainer = styled.li`
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]};
   }
+`;
+export const ContactAvatar = styled.img`
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[4]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  height: ${p => p.theme.sizes.height.friendsItem};
 `;
 export const ContactName = styled.h3`
   margin-top: ${p => p.theme.space[0]};

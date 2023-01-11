@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { filterReducer } from './filterSlice';
-import { contactsReducer } from './ContactsSlice';
+import { contactsReducer } from './contactsSlice';
 
 export const store = configureStore({
   reducer: {
     filter: filterReducer,
-    Contacts: contactsReducer,
+    contacts: contactsReducer,
   },
 });
