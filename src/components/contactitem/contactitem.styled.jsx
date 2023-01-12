@@ -86,8 +86,8 @@ export const DelButon = styled.button`
   padding-bottom: ${p => p.theme.space[0]};
   padding-left: ${p => p.theme.space[0]};
 
-  width: ${p => p.theme.sizes.width.buttonM};
-  height: ${p => p.theme.sizes.height.buttonM};
+  width: ${p => p.theme.sizes.width.buttonIco};
+  height: ${p => p.theme.sizes.height.buttonIco};
 
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.m}px;
@@ -95,7 +95,8 @@ export const DelButon = styled.button`
 
   color: ${p => p.theme.color.primary};
 
-  border-radius: ${p => p.theme.radii.m};
+  border-color: transparent;
+  border-radius: ${p => p.theme.radii.round};
 
   background-color: ${p => p.theme.color.background};
 

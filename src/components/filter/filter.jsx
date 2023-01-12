@@ -1,6 +1,7 @@
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+// import { useSearchParams } from 'react-router-dom';
 
 import { ContactFilterForm, FilterInputForm } from './filter.styled';
 import { setFilterContent } from 'redux/filterSlice';
@@ -11,6 +12,7 @@ const Filter = () => {
   const searchFormId = shortid.generate();
   const dispatch = useDispatch();
   const filter = useSelector(getFilterContent);
+  // const [serchParams, setSearchParams] = useSearchParams();
 
   const handleChangefilterContent = event => {
     dispatch(setFilterContent(event.target.value));

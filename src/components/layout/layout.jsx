@@ -1,4 +1,4 @@
-import { Nav } from 'components/nav/nav';
+import Nav from 'components/nav/nav';
 
 import { LayoutContainer } from './layout.styled';
 
@@ -7,7 +7,6 @@ export const Layout = () => {
     <nav>
       <LayoutContainer>
         <Nav />
-        {/* <ContactList /> */}
       </LayoutContainer>
     </nav>
   );

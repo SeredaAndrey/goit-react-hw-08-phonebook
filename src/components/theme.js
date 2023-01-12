@@ -24,6 +24,7 @@ export const theme = {
       buttonM: '120px',
       buttonML: '160px',
       buttonXL: '200px',
+      buttonIco: '60px',
       totalItem: '500px',
     },
     height: {
@@ -39,6 +40,7 @@ export const theme = {
       buttonM: '30px',
       buttonML: '36px',
       buttonXL: '40px',
+      buttonIco: '60px',
     },
   },
   space: [

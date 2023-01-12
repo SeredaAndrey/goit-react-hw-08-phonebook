@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
+
 import shortid from 'shortid';
 import {
   ContactInputForm,
@@ -7,7 +12,10 @@ import {
   AddButon,
 } from './contactform.styled';
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
+  const dispatch = useDispatch();
+  const { items } = useSelector(getContacts);
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -24,7 +32,22 @@ export default function ContactForm({ onSubmit }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(name, number);
+
+    let flag = false;
+    if (items && items !== []) {
+      for (const contact of items) {
+        if (contact.name === name) {
+          alert(`${name} is alredy in contacts`);
+          flag = true;
+          break;
+        }
+      }
+    }
+    if (!flag) {
+      console.log('add contact', name);
+      dispatch(addContact({ name, number }));
+    }
+
     formReset();
   };
 

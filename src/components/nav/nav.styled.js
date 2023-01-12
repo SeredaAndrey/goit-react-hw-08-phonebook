@@ -50,14 +50,36 @@ export const NavLinkContainer = styled.div`
   font-weight: ${p => p.theme.fontWeights.bold};
 
   color: ${p => p.theme.color.primary};
+  background-color: ${p => p.theme.color.backgroundAccent};
+
   text-transform: uppercase;
 
   > a {
+    margin-top: ${p => p.theme.space[0]};
+    margin-right: ${p => p.theme.space[0]};
+    margin-bottom: ${p => p.theme.space[0]};
+    margin-left: ${p => p.theme.space[0]};
+
+    padding-top: ${p => p.theme.space[0]};
+    padding-right: ${p => p.theme.space[5]};
+    padding-bottom: ${p => p.theme.space[0]};
+    padding-left: ${p => p.theme.space[5]};
+
     text-decoration: none;
+
     color: ${p => p.theme.color.primary};
-    &:hover,
-    &:focus {
-      color: ${p => p.theme.color.seccondary};
-    }
+
+    border-top-left-radius: ${p => p.theme.radii.m};
+    border-top-right-radius: ${p => p.theme.radii.m};
+
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .active {
+    background-color: ${p => p.theme.color.background};
+    color: ${p => p.theme.color.secondary};
+  }
+  &:hover :not(.active) {
+    color: blue;
   }
 `;

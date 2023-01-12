@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaTrash } from 'react-icons/fa';
 
 import {
   ContactItemContainer,
@@ -16,7 +17,7 @@ const ContactItem = ({ id, name, number, avatar, onDeleteContact }) => {
       <ContactName>{name}:</ContactName>
       <ContactTelephone>{number}</ContactTelephone>
       <DelButon type="button" onClick={() => onDeleteContact(id)}>
-        Delete contact
+        <FaTrash />
       </DelButon>
     </ContactItemContainer>
   );
