@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FaTrash } from 'react-icons/fa';
+import { FaPen, FaTrash } from 'react-icons/fa';
 
 import {
   ContactItemContainer,
@@ -8,6 +8,7 @@ import {
   ContactName,
   ContactTelephone,
   DelButon,
+  ConfButon,
 } from './contactitem.styled';
 
 const ContactItem = ({ id, name, number, avatar, onDeleteContact }) => {
@@ -19,6 +20,9 @@ const ContactItem = ({ id, name, number, avatar, onDeleteContact }) => {
       <DelButon type="button" onClick={() => onDeleteContact(id)}>
         <FaTrash />
       </DelButon>
+      <ConfButon type="button" onClick="">
+        <FaPen />
+      </ConfButon>
     </ContactItemContainer>
   );
 };
