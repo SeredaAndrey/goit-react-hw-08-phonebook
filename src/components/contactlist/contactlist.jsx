@@ -1,32 +1,57 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { deleteContact, fetchContacts } from 'redux/operations';
+import { getFilterContent, getContacts } from 'redux/selectors';
+
 import ContactItem from 'components/contactitem/contactitem';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+import { ContactListContainer, ContactListMesage } from './contactlist.styled';
+
+const ContactList = () => {
+  const dispatch = useDispatch();
+  const { items, isLoading, error } = useSelector(getContacts);
+  const filter = useSelector(getFilterContent);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const onDeleteContact = id => {
+    dispatch(deleteContact(id));
+  };
+
+  const getVisbleContacts = () => {
+    if (items.length !== 0) {
+      return items.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
+  };
+
   return (
-    <ul key="contactList">
-      {contacts.map(({ id, name, number, avatar }) => {
-        return (
-          <ContactItem
-            id={id}
-            name={name}
-            number={number}
-            avatar={avatar}
-            onDeleteContact={onDeleteContact}
-          />
-        );
-      })}
-    </ul>
+    <>
+      {isLoading && <ContactListMesage>Loading contacts...</ContactListMesage>}
+      {error && <ContactListMesage>{error}</ContactListMesage>}
+      {items.length !== 0 && (
+        <ContactListContainer key="contactList">
+          {getVisbleContacts().map(({ id, name, number, avatar }) => {
+            return (
+              <ContactItem
+                id={id}
+                name={name}
+                number={number}
+                avatar={avatar}
+                onDeleteContact={onDeleteContact}
+              />
+            );
+          })}
+        </ContactListContainer>
+      )}
+    </>
   );
 };
 
 export default ContactList;
-
-ContactList.prototype = {
-  contacts: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-  }),
-};

@@ -7,9 +7,9 @@ export const ContactItemContainer = styled.li`
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
-  padding-right: ${p => p.theme.space[5]};
+  padding-right: ${p => p.theme.space[6]};
   padding-bottom: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[5]};
+  padding-left: ${p => p.theme.space[6]};
 
   border-radius: ${p => p.theme.radii.ml};
 

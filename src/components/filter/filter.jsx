@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ContactFilterForm, FilterInputForm } from './filter.styled';
 import { setFilterContent } from 'redux/filterSlice';
 import { getFilterContent } from 'redux/selectors';
+import { Outlet } from 'react-router-dom';
 
 const Filter = () => {
   const searchFormId = shortid.generate();
@@ -16,15 +17,18 @@ const Filter = () => {
   };
 
   return (
-    <ContactFilterForm htmlFor={searchFormId}>
-      Find contacts by Name
-      <FilterInputForm
-        type="text"
-        id={searchFormId}
-        value={filter}
-        onChange={handleChangefilterContent}
-      />
-    </ContactFilterForm>
+    <>
+      <ContactFilterForm htmlFor={searchFormId}>
+        Find contacts by Name
+        <FilterInputForm
+          type="text"
+          id={searchFormId}
+          value={filter}
+          onChange={handleChangefilterContent}
+        />
+      </ContactFilterForm>
+      <Outlet />
+    </>
   );
 };
 

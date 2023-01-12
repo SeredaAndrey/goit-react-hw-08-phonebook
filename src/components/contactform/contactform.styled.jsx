@@ -2,14 +2,16 @@ import styled from '@emotion/styled';
 
 export const ContactInputForm = styled.form`
   margin-top: ${p => p.theme.space[0]};
-  margin-right: ${p => p.theme.space[0]};
+  margin-right: auto;
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[0]};
+  margin-left: auto;
 
   padding-top: ${p => p.theme.space[4]};
   padding-right: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[4]};
   padding-left: ${p => p.theme.space[0]};
+
+  width: ${p => p.theme.sizes.width.container};
 
   border-bottom-left-radius: ${p => p.theme.radii.ml};
   border-bottom-right-radius: ${p => p.theme.radii.ml};
