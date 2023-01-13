@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { FaArrowLeft } from 'react-icons/fa';
 
 import { getContacts } from 'redux/selectors';
 
@@ -8,11 +9,13 @@ import {
   ContactAvatar,
   ContactDetailsName,
   ContactDetailsTelephone,
+  BackButon,
 } from './contactdetails.styled';
 
 const ContactDetails = () => {
   const params = useParams();
   const { items } = useSelector(getContacts);
+  const navigate = useNavigate();
 
   const getContactForId = id => {
     const index = items.findIndex(contacst => contacst.id === id);
@@ -39,6 +42,9 @@ const ContactDetails = () => {
         <ContactDetailsTelephone>
           number: {getContactForId(params.id).number}
         </ContactDetailsTelephone>
+        <BackButon onClick={() => navigate(-1)}>
+          <FaArrowLeft /> Back
+        </BackButon>
       </ContactDetailsContainer>
     </>
   );
