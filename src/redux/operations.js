@@ -38,3 +38,14 @@ export const addContact = createAsyncThunk(
     }
   }
 );
+export const putContact = createAsyncThunk(
+  'contacts/putContacts',
+  async (contactId, thunkAPI) => {
+    try {
+      const responce = await axios.put('/contacts', contactId);
+      return responce.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

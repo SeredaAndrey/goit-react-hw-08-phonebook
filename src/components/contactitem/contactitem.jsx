@@ -1,28 +1,27 @@
 import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FaPen, FaTrash } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 
 import {
   ContactItemContainer,
-  ContactAvatar,
   ContactName,
   ContactTelephone,
   DelButon,
-  ConfButon,
 } from './contactitem.styled';
 
-const ContactItem = ({ id, name, number, avatar, onDeleteContact }) => {
+const ContactItem = ({ id, name, number, onDeleteContact }) => {
+  const location = useLocation();
   return (
     <ContactItemContainer key={id}>
-      <ContactAvatar src={avatar} alt="name" />
-      <ContactName>{name}:</ContactName>
-      <ContactTelephone>{number}</ContactTelephone>
+      {/* <ContactAvatar src={avatar} alt="name" /> */}
+      <NavLink to={`../contacts/${id}`} state={{ from: location }}>
+        <ContactName>{name}:</ContactName>
+        <ContactTelephone>{number}</ContactTelephone>
+      </NavLink>
       <DelButon type="button" onClick={() => onDeleteContact(id)}>
         <FaTrash />
       </DelButon>
-      <ConfButon type="button" onClick="">
-        <FaPen />
-      </ConfButon>
     </ContactItemContainer>
   );
 };
@@ -33,5 +32,4 @@ ContactItem.prototype = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
 };

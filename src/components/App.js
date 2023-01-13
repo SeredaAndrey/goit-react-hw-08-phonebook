@@ -5,7 +5,8 @@ import { Layout } from './layout/layout';
 import Nav from './nav/nav';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
-const ContactForm = lazy(() => import('./contactform/contactform'));
+import ContactDetails from './contactdetails/contactdetails';
+const ContactForm = lazy(() => import('./contactform/addContactform'));
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
             <Route index element={<ContactList />} />
           </Route>
           <Route path="add" element={<ContactForm />} />
+          <Route path="contacts/:id" element={<ContactDetails />} />
           <Route path="*" element={<div>page not found</div>} />
         </Route>
         <Route path="*" element={<div>page not found</div>} />

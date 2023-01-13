@@ -10,7 +10,7 @@ import {
   LabelForm,
   InputForm,
   AddButon,
-} from './contactform.styled';
+} from './addContactform.styled';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -44,7 +44,6 @@ export default function ContactForm() {
       }
     }
     if (!flag) {
-      console.log('add contact', name);
       dispatch(addContact({ name, number }));
     }
 

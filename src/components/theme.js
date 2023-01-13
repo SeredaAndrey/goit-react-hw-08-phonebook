@@ -34,6 +34,7 @@ export const theme = {
       statusSpan: '20px',
       totalItem: '60px',
       statisticUser: '60px',
+      avatar: '150px',
       friendsItem: '80px',
       tableHead: '35px',
       tableData: '25px',
@@ -87,6 +88,7 @@ export const theme = {
     m: '8px',
     ml: '12px',
     l: '16px',
+    xl: '30px',
     round: '50%',
   },
 };

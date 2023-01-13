@@ -25,20 +25,39 @@ export const ContactItemContainer = styled.li`
   &:not(:last-child) {
     margin-bottom: ${p => p.theme.space[4]};
   }
-`;
-export const ContactAvatar = styled.img`
-  margin-top: ${p => p.theme.space[0]};
-  margin-right: ${p => p.theme.space[4]};
-  margin-bottom: ${p => p.theme.space[0]};
-  margin-left: ${p => p.theme.space[0]};
+  > a {
+    display: flex;
 
-  padding-top: ${p => p.theme.space[0]};
-  padding-right: ${p => p.theme.space[0]};
-  padding-bottom: ${p => p.theme.space[0]};
-  padding-left: ${p => p.theme.space[0]};
+    margin-top: ${p => p.theme.space[0]};
+    margin-right: ${p => p.theme.space[0]};
+    margin-bottom: ${p => p.theme.space[0]};
+    margin-left: ${p => p.theme.space[0]};
 
-  height: ${p => p.theme.sizes.height.friendsItem};
+    padding-top: ${p => p.theme.space[4]};
+    padding-right: ${p => p.theme.space[4]};
+    padding-bottom: ${p => p.theme.space[4]};
+    padding-left: ${p => p.theme.space[4]};
+
+    // width: ${p => p.theme.sizes.width.buttonIco};
+    // height: ${p => p.theme.sizes.height.buttonIco};
+
+    border-radius: ${p => p.theme.radii.xl};
+
+    text-decoration: none;
+
+    color: ${p => p.theme.color.primary};
+
+    background-color: ${p => p.theme.color.background};
+
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+      background-color: ${p => p.theme.color.backgroundAccent};
+    }
+  }
 `;
+
 export const ContactName = styled.h3`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[4]};
@@ -53,8 +72,6 @@ export const ContactName = styled.h3`
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.ml}px;
   font-weight: ${p => p.theme.fontWeights.bold};
-
-  color: ${p => p.theme.color.primary};
 `;
 
 export const ContactTelephone = styled.p`
@@ -71,8 +88,6 @@ export const ContactTelephone = styled.p`
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.ml}px;
   font-weight: ${p => p.theme.fontWeights.normal};
-
-  color: ${p => p.theme.color.primary};
 `;
 
 export const DelButon = styled.button`
