@@ -30,7 +30,7 @@ const ContactDetails = () => {
   return (
     <>
       <ContactDetailsContainer>
-        <ContactDetailsName>Contact id:{params.id} details</ContactDetailsName>
+        <ContactDetailsName>Contact details</ContactDetailsName>
 
         <ContactAvatar
           src={getContactForId(params.id).avatar}
@@ -41,6 +41,9 @@ const ContactDetails = () => {
         </ContactDetailsName>
         <ContactDetailsTelephone>
           number: {getContactForId(params.id).number}
+        </ContactDetailsTelephone>
+        <ContactDetailsTelephone>
+          contact id: {getContactForId(params.id).id}
         </ContactDetailsTelephone>
         <BackButon onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
