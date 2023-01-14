@@ -14,6 +14,17 @@ export const fetchContacts = createAsyncThunk(
     }
   }
 );
+export const fetchFullContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async (contactId, thunkAPI) => {
+    try {
+      const responce = await axios.get(`/contacts/${contactId}`);
+      return responce.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',

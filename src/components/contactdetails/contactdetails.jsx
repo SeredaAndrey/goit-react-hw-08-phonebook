@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaArrowLeft } from 'react-icons/fa';
 
-import { getContacts } from 'redux/selectors';
+// import { getFullContacts } from 'redux/selectors';
 
 import {
   ContactDetailsContainer,
@@ -11,20 +11,30 @@ import {
   ContactDetailsTelephone,
   BackButon,
 } from './contactdetails.styled';
+import { useEffect } from 'react';
+import { fetchFullContacts } from 'redux/operations';
 
 const ContactDetails = () => {
+  const dispatch = useDispatch();
   const params = useParams();
-  const { items } = useSelector(getContacts);
+  // const { items, isLoading, error } = useSelector(getFullContacts);
   const navigate = useNavigate();
 
-  const getContactForId = id => {
-    const index = items.findIndex(contacst => contacst.id === id);
-    return {
-      id: items[index].id,
-      name: items[index].name,
-      number: items[index].number,
-      avatar: items[index].avatar,
-    };
+  useEffect(() => {
+    getContactForId();
+  }, []);
+
+  // console.log(items, isLoading, error);
+  const getContactForId = () => {
+    // dispatch(fetchFullContacts(params.id))
+    console.log(dispatch(fetchFullContacts(params.id)));
+    // const index = items.findIndex(contacst => contacst.id === id);
+    // return {
+    //   id: items[index].id,
+    //   name: items[index].name,
+    //   number: items[index].number,
+    //   avatar: items[index].avatar,
+    // };
   };
 
   return (
@@ -32,19 +42,10 @@ const ContactDetails = () => {
       <ContactDetailsContainer>
         <ContactDetailsName>Contact details</ContactDetailsName>
 
-        <ContactAvatar
-          src={getContactForId(params.id).avatar}
-          alt={getContactForId(params.id).name}
-        />
-        <ContactDetailsName>
-          name: {getContactForId(params.id).name}
-        </ContactDetailsName>
-        <ContactDetailsTelephone>
-          number: {getContactForId(params.id).number}
-        </ContactDetailsTelephone>
-        <ContactDetailsTelephone>
-          contact id: {getContactForId(params.id).id}
-        </ContactDetailsTelephone>
+        <ContactAvatar src="" alt="" />
+        <ContactDetailsName>name:</ContactDetailsName>
+        <ContactDetailsTelephone>number:</ContactDetailsTelephone>
+        <ContactDetailsTelephone>contact id:</ContactDetailsTelephone>
         <BackButon onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
         </BackButon>

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteContact, fetchContacts, putContact } from 'redux/operations';
+import { deleteContact, fetchContacts } from 'redux/operations';
 import { getFilterContent, getContacts } from 'redux/selectors';
 
 import ContactItem from 'components/contactitem/contactitem';
@@ -23,10 +23,6 @@ const ContactList = () => {
     dispatch(deleteContact(id));
   };
 
-  const onPutContact = id => {
-    dispatch(putContact(id));
-  };
-
   const getVisbleContacts = () => {
     if (items.length !== 0) {
       return items.filter(contact =>
@@ -41,15 +37,12 @@ const ContactList = () => {
       {error && <ContactListMesage>{error}</ContactListMesage>}
       {items.length !== 0 && (
         <ContactListContainer key="contactList">
-          {getVisbleContacts().map(({ id, name, number, avatar }) => {
+          {getVisbleContacts().map(({ id, name }) => {
             return (
               <ContactItem
                 id={id}
                 name={name}
-                number={number}
-                avatar={avatar}
                 onDeleteContact={onDeleteContact}
-                onPutContact={onPutContact}
               />
             );
           })}

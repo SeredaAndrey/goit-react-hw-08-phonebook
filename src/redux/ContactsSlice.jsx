@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
+  fetchFullContacts,
   addContact,
   deleteContact,
   putContact,
@@ -24,6 +25,18 @@ const contactsSlice = createSlice({
       state.items = action.payload;
     },
     [fetchContacts.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [fetchFullContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [fetchFullContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+    },
+    [fetchFullContacts.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
