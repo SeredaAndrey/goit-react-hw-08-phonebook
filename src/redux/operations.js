@@ -14,6 +14,7 @@ export const fetchContacts = createAsyncThunk(
     }
   }
 );
+
 export const fetchFullContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (contactId, thunkAPI) => {
