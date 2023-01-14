@@ -16,19 +16,41 @@ export default function ContactForm() {
   const dispatch = useDispatch();
   const { items } = useSelector(getContacts);
 
-  const [name, setName] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
+  const [city, setCity] = useState('');
+  const [gender] = useState('');
 
-  const nameInputId = shortid.generate();
+  const firstNnameInputId = shortid.generate();
   const numberInputId = shortid.generate();
+  const emailInputId = shortid.generate();
+  const lastNnameInputId = shortid.generate();
+  const cityInputId = shortid.generate();
+  // const genderInputId = shortid.generate();
 
-  const handleChangeName = event => {
-    setName(event.currentTarget.value);
+  const handleChangeFirstName = event => {
+    setFirstName(event.currentTarget.value);
+  };
+  const handleChangeLastName = event => {
+    setLastName(event.currentTarget.value);
+  };
+
+  const handleChangeEmail = event => {
+    setEmail(event.currentTarget.value);
   };
 
   const handleChangeNumber = event => {
     setNumber(event.currentTarget.value);
   };
+
+  const handleChangeCity = event => {
+    setCity(event.currentTarget.value);
+  };
+  // const handleChangeGender = event => {
+  //   setGender(event.currentTarget.value);
+  // };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -36,38 +58,85 @@ export default function ContactForm() {
     let flag = false;
     if (items && items !== []) {
       for (const contact of items) {
-        if (contact.name === name) {
-          alert(`${name} is alredy in contacts`);
+        if (contact.firstname === firstname) {
+          alert(`${firstname} is alredy in contacts`);
           flag = true;
           break;
         }
       }
     }
     if (!flag) {
-      dispatch(addContact({ name, number }));
+      const fullname = firstname + ' ' + lastname;
+      dispatch(
+        addContact({
+          fullname,
+          firstname,
+          lastname,
+          email,
+          number,
+          city,
+          gender,
+        })
+      );
     }
 
-    formReset();
+    // formReset();
   };
 
-  const formReset = () => {
-    setName('');
-    setNumber('');
-  };
+  // const formReset = () => {
+  //   setFirstName('');
+  //   setLastName('');
+  //   setEmail('');
+  //   setNumber('');
+  //   setSity('');
+  // };
 
   return (
     <ContactInputForm onSubmit={handleSubmit}>
-      <LabelForm htmlFor={nameInputId}>
-        Name
+      <LabelForm htmlFor={firstNnameInputId}>
+        Firstname
         <InputForm
           type="text"
-          name="name"
+          firstname="firstname"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          value={name}
-          onChange={handleChangeName}
-          id={nameInputId}
+          value={firstname}
+          onChange={handleChangeFirstName}
+          id={firstNnameInputId}
+        />
+      </LabelForm>
+      <LabelForm htmlFor={lastNnameInputId}>
+        Lastname
+        <InputForm
+          type="text"
+          lastname="lastname"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+          value={lastname}
+          onChange={handleChangeLastName}
+          id={lastNnameInputId}
+        />
+      </LabelForm>
+      <LabelForm htmlFor={emailInputId}>
+        E-mail adress
+        <InputForm
+          type="text"
+          email="email"
+          value={email}
+          onChange={handleChangeEmail}
+          id={emailInputId}
+        />
+      </LabelForm>
+      <LabelForm htmlFor={cityInputId}>
+        City
+        <InputForm
+          type="text"
+          city="city"
+          value={city}
+          onChange={handleChangeCity}
+          id={cityInputId}
         />
       </LabelForm>
       <LabelForm htmlFor={numberInputId}>

@@ -1,51 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { FaArrowLeft } from 'react-icons/fa';
-
-// import { getFullContacts } from 'redux/selectors';
 
 import {
   ContactDetailsContainer,
   ContactAvatar,
   ContactDetailsName,
-  ContactDetailsTelephone,
+  ContactDetailsMore,
   BackButon,
 } from './contactdetails.styled';
 import { useEffect } from 'react';
-import { fetchFullContacts } from 'redux/operations';
+import { useState } from 'react';
 
 const ContactDetails = () => {
-  const dispatch = useDispatch();
+  const [Details, setDetails] = useState({});
   const params = useParams();
-  // const { items, isLoading, error } = useSelector(getFullContacts);
   const navigate = useNavigate();
 
   useEffect(() => {
     getContactForId();
   }, []);
 
-  // console.log(items, isLoading, error);
-  const getContactForId = () => {
-    // dispatch(fetchFullContacts(params.id))
-    console.log(dispatch(fetchFullContacts(params.id)));
-    // const index = items.findIndex(contacst => contacst.id === id);
-    // return {
-    //   id: items[index].id,
-    //   name: items[index].name,
-    //   number: items[index].number,
-    //   avatar: items[index].avatar,
-    // };
+  const getContactForId = async () => {
+    try {
+      const responce = await axios.get(`/contacts/${params.id}`);
+      setDetails(responce.data);
+    } catch (error) {
+      return error.message;
+    }
   };
+
+  const { avatar, firstname, lastname, gender, number, email, city, id } =
+    Details;
 
   return (
     <>
       <ContactDetailsContainer>
         <ContactDetailsName>Contact details</ContactDetailsName>
 
-        <ContactAvatar src="" alt="" />
-        <ContactDetailsName>name:</ContactDetailsName>
-        <ContactDetailsTelephone>number:</ContactDetailsTelephone>
-        <ContactDetailsTelephone>contact id:</ContactDetailsTelephone>
+        <ContactAvatar src={avatar} alt={firstname} />
+        <ContactDetailsName>firstname: {firstname}</ContactDetailsName>
+        <ContactDetailsName>lastname: {lastname}</ContactDetailsName>
+        <ContactDetailsMore>gender: {gender}</ContactDetailsMore>
+        <ContactDetailsMore>number: {number}</ContactDetailsMore>
+        <ContactDetailsMore>e-mail adress: {email}</ContactDetailsMore>
+        <ContactDetailsMore>city: {city}</ContactDetailsMore>
+        <ContactDetailsMore>contact id: {id}</ContactDetailsMore>
         <BackButon onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
         </BackButon>

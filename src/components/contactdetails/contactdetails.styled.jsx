@@ -7,7 +7,7 @@ export const ContactDetailsContainer = styled.div`
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: auto;
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[4]};
   margin-left: auto;
 
   padding-top: ${p => p.theme.space[0]};
@@ -40,7 +40,7 @@ export const ContactDetailsContainer = styled.div`
 export const ContactAvatar = styled.img`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[4]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[4]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
@@ -54,7 +54,7 @@ export const ContactAvatar = styled.img`
 export const ContactDetailsName = styled.h3`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[4]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[3]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
@@ -67,10 +67,10 @@ export const ContactDetailsName = styled.h3`
   font-weight: ${p => p.theme.fontWeights.bold};
 `;
 
-export const ContactDetailsTelephone = styled.p`
+export const ContactDetailsMore = styled.p`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[3]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
