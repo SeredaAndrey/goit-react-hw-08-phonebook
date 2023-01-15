@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
@@ -13,6 +14,7 @@ import {
 } from './addContactform.styled';
 
 export default function ContactForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items } = useSelector(getContacts);
 
@@ -63,18 +65,12 @@ export default function ContactForm() {
     if (!flag) {
       const fullname = firstname + ' ' + lastname;
       dispatch(
-        addContact({
-          fullname,
-          firstname,
-          lastname,
-          email,
-          number,
-          city,
-        })
+        addContact({ fullname, firstname, lastname, email, number, city })
       );
     }
 
     formReset();
+    navigate('/filter');
   };
 
   const formReset = () => {

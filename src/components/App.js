@@ -5,8 +5,8 @@ import { Layout } from './layout/layout';
 import Nav from './nav/nav';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
-import ContactDetails from './contactdetails/contactdetails';
 const ContactForm = lazy(() => import('./contactform/addContactform'));
+const ContactDetails = lazy(() => import('./contactdetails/contactdetails'));
 
 export const App = () => {
   return (

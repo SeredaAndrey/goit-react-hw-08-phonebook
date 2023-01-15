@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -24,7 +25,7 @@ export const deleteContact = createAsyncThunk(
       );
       const responceShot = await axios.delete(`/contacts/${contactId}`);
 
-      return responceShot.data + responceFull;
+      return responceShot.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -48,21 +49,9 @@ export const addContact = createAsyncThunk(
           city,
         }
       );
-      console.log(responceShot.data, responceFull.data);
       return responceShot.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-// export const putContact = createAsyncThunk(
-//   'contacts/putContacts',
-//   async (contactId, thunkAPI) => {
-//     try {
-//       const responce = await axios.put('/contacts', contactId);
-//       return responce.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
