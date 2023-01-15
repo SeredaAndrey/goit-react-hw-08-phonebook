@@ -19,8 +19,12 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      const responce = await axios.delete(`/contacts/${contactId}`);
-      return responce.data;
+      const responceFull = await axios.delete(
+        `/contacts/${contactId}/details/${contactId}`
+      );
+      const responceShot = await axios.delete(`/contacts/${contactId}`);
+
+      return responceShot.data + responceFull;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -29,21 +33,23 @@ export const deleteContact = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContacts',
-  async (
-    { fullname, firstname, lastname, email, number, city, gender },
-    thunkAPI
-  ) => {
+  async ({ fullname, firstname, lastname, email, number, city }, thunkAPI) => {
     try {
-      const responce = await axios.post('/contacts', {
+      const responceShot = await axios.post('/contacts', {
         fullname,
-        firstname,
-        lastname,
-        email,
-        number,
-        city,
-        gender,
       });
-      return responce.data;
+      const responceFull = await axios.post(
+        `/contacts/${responceShot.data.id}/details`,
+        {
+          firstname,
+          lastname,
+          email,
+          number,
+          city,
+        }
+      );
+      console.log(responceShot.data, responceFull.data);
+      return responceShot.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -24,15 +24,14 @@ const ContactDetails = () => {
 
   const getContactForId = async () => {
     try {
-      const responce = await axios.get(`/contacts/${params.id}`);
-      setDetails(responce.data);
+      const responce = await axios.get(`/contacts/${params.id}/details`);
+      setDetails(responce.data[0]);
     } catch (error) {
       return error.message;
     }
   };
 
-  const { avatar, firstname, lastname, gender, number, email, city, id } =
-    Details;
+  const { avatar, firstname, lastname, number, email, city, id } = Details;
 
   return (
     <>
@@ -42,7 +41,6 @@ const ContactDetails = () => {
         <ContactAvatar src={avatar} alt={firstname} />
         <ContactDetailsName>firstname: {firstname}</ContactDetailsName>
         <ContactDetailsName>lastname: {lastname}</ContactDetailsName>
-        <ContactDetailsMore>gender: {gender}</ContactDetailsMore>
         <ContactDetailsMore>number: {number}</ContactDetailsMore>
         <ContactDetailsMore>e-mail adress: {email}</ContactDetailsMore>
         <ContactDetailsMore>city: {city}</ContactDetailsMore>

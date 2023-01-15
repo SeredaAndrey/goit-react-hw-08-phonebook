@@ -79,7 +79,4 @@ export const NavLinkContainer = styled.div`
     background-color: ${p => p.theme.color.background};
     color: ${p => p.theme.color.secondary};
   }
-  &:hover :not(.active) {
-    color: blue;
-  }
 `;

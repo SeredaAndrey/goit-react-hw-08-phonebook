@@ -21,14 +21,12 @@ export default function ContactForm() {
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
   const [city, setCity] = useState('');
-  const [gender] = useState('');
 
   const firstNnameInputId = shortid.generate();
   const numberInputId = shortid.generate();
   const emailInputId = shortid.generate();
   const lastNnameInputId = shortid.generate();
   const cityInputId = shortid.generate();
-  // const genderInputId = shortid.generate();
 
   const handleChangeFirstName = event => {
     setFirstName(event.currentTarget.value);
@@ -48,9 +46,6 @@ export default function ContactForm() {
   const handleChangeCity = event => {
     setCity(event.currentTarget.value);
   };
-  // const handleChangeGender = event => {
-  //   setGender(event.currentTarget.value);
-  // };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -75,21 +70,20 @@ export default function ContactForm() {
           email,
           number,
           city,
-          gender,
         })
       );
     }
 
-    // formReset();
+    formReset();
   };
 
-  // const formReset = () => {
-  //   setFirstName('');
-  //   setLastName('');
-  //   setEmail('');
-  //   setNumber('');
-  //   setSity('');
-  // };
+  const formReset = () => {
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setNumber('');
+    setCity('');
+  };
 
   return (
     <ContactInputForm onSubmit={handleSubmit}>
