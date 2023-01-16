@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 
