@@ -20,34 +20,17 @@ export default function ContactForm() {
   const { items } = useSelector(getContacts);
 
   const [name, setName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
-  const [city, setCity] = useState('');
 
   const nameInputId = shortid.generate();
   const numberInputId = shortid.generate();
-  const emailInputId = shortid.generate();
-  const lastNnameInputId = shortid.generate();
-  const cityInputId = shortid.generate();
 
   const handleChangeName = event => {
     setName(event.currentTarget.value);
   };
-  const handleChangeLastName = event => {
-    setLastName(event.currentTarget.value);
-  };
-
-  const handleChangeEmail = event => {
-    setEmail(event.currentTarget.value);
-  };
 
   const handleChangeNumber = event => {
     setNumber(event.currentTarget.value);
-  };
-
-  const handleChangeCity = event => {
-    setCity(event.currentTarget.value);
   };
 
   const handleSubmit = event => {
@@ -64,12 +47,11 @@ export default function ContactForm() {
       }
     }
     if (!flag) {
-      const name = name + ' ' + lastname;
       dispatch(addContact({ name, number }));
     }
 
     formReset();
-    navigate('/filter');
+    navigate('/contacts/filter');
   };
 
   const formReset = () => {

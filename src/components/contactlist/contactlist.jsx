@@ -27,7 +27,7 @@ const ContactList = () => {
   const getVisbleContacts = () => {
     if (items.length !== 0) {
       return items.filter(contact =>
-        contact.fullname.toLowerCase().includes(filter.toLowerCase())
+        contact.name.toLowerCase().includes(filter.toLowerCase())
       );
     }
   };
@@ -38,11 +38,11 @@ const ContactList = () => {
       {error && <ContactListMesage>{error}</ContactListMesage>}
       {items.length !== 0 && (
         <ContactListContainer key="contactList">
-          {getVisbleContacts().map(({ id, fullname }) => {
+          {getVisbleContacts().map(({ id, name }) => {
             return (
               <ContactItem
                 id={id}
-                fullname={fullname}
+                name={name}
                 onDeleteContact={onDeleteContact}
               />
             );

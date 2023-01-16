@@ -38,9 +38,9 @@ export const LabelFormContainer = styled.div`
   padding-left: ${p => p.theme.space[0]};
 `;
 export const LabelForm = styled.label`
-  margin-top: ${p => p.theme.space[0]};
+  margin-top: ${p => p.theme.space[3]};
   margin-right: ${p => p.theme.space[0]};
-  margin-bottom: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[3]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};

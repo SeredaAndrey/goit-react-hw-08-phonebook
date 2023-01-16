@@ -14,8 +14,8 @@ import { theme } from './components/theme';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/goit-react-hw-08-phonebook/">
-        {/* <BrowserRouter> */}
+      {/* <BrowserRouter basename="/goit-react-hw-08-phonebook/"> */}
+      <BrowserRouter>
         <Provider store={store}>
           <App />
         </Provider>
