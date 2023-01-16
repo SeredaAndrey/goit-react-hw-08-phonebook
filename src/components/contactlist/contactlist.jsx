@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { getFilterContent, getContacts } from 'redux/selectors';
 import ContactItem from 'components/contactitem/contactitem';
 
 import { ContactListContainer, ContactListMesage } from './contactlist.styled';
+import { Outlet } from 'react-router-dom';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ const ContactList = () => {
           })}
         </ContactListContainer>
       )}
+      <Suspense fallback={<ContactListMesage>Loading...</ContactListMesage>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

@@ -45,9 +45,9 @@ const ContactDetails = () => {
         <ContactDetailsMore>e-mail adress: {email}</ContactDetailsMore>
         <ContactDetailsMore>city: {city}</ContactDetailsMore>
         <ContactDetailsMore>contact id: {id}</ContactDetailsMore>
-        <BackButon onClick={() => navigate(-1)}>
+        {/* <BackButon onClick={() => navigate(-1)}>
           <FaArrowLeft /> Back
-        </BackButon>
+        </BackButon> */}
       </ContactDetailsContainer>
     </>
   );

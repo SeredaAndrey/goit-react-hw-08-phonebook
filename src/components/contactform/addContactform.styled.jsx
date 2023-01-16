@@ -13,19 +13,34 @@ export const ContactInputForm = styled.form`
 
   width: ${p => p.theme.sizes.width.container};
 
+  border-top-right-radius: ${p => p.theme.radii.ml};
   border-bottom-left-radius: ${p => p.theme.radii.ml};
   border-bottom-right-radius: ${p => p.theme.radii.ml};
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
   background-color: ${p => p.theme.color.background};
 `;
+export const LabelFormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+`;
 export const LabelForm = styled.label`
   margin-top: ${p => p.theme.space[0]};
-  margin-right: ${p => p.theme.space[7]};
-  margin-bottom: ${p => p.theme.space[4]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
@@ -64,9 +79,9 @@ export const InputForm = styled.input`
 `;
 export const AddButon = styled.button`
   margin-top: ${p => p.theme.space[0]};
-  margin-right: auto;
+  margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
-  margin-left: auto;
+  margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};

@@ -12,14 +12,16 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="" element={<Nav />}>
-          <Route path="filter" element={<Filter />}>
-            <Route index element={<ContactList />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="contacts" element={<Nav />}>
+            <Route path="filter" element={<Filter />}>
+              <Route path="" element={<ContactList />}>
+                <Route path=":id" element={<ContactDetails />} />
+                <Route path="*" element={<div>page not found</div>} />
+              </Route>
+            </Route>
+            <Route path="add" element={<ContactForm />} />
           </Route>
-          <Route path="add" element={<ContactForm />} />
-          <Route path="contacts/:id" element={<ContactDetails />} />
-          <Route path="*" element={<div>page not found</div>} />
         </Route>
         <Route path="*" element={<div>page not found</div>} />
       </Routes>

@@ -13,12 +13,12 @@ const ContactItem = ({ id, fullname, onDeleteContact }) => {
   const location = useLocation();
   return (
     <ContactItemContainer key={id}>
-      <NavLink to={`../contacts/${id}`} state={{ from: location }}>
-        <ContactName>Name: {fullname}</ContactName>
+      <NavLink to={`/contacts/filter/${id}`} state={{ from: location }}>
+        <ContactName>{fullname}</ContactName>
       </NavLink>
-      <DelButon type="button" onClick={() => onDeleteContact(id)}>
+      {/* <DelButon type="button" onClick={() => onDeleteContact(id)}>
         <FaTrash />
-      </DelButon>
+      </DelButon> */}
     </ContactItemContainer>
   );
 };

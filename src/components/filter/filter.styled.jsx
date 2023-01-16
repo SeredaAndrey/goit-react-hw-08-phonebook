@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const ContactFilterForm = styled.label`
   margin-top: ${p => p.theme.space[0]};
-  margin-right: auto;
+  margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[4]};
-  margin-left: auto;
+  margin-left: ${p => p.theme.space[0]};
 
   padding-top: ${p => p.theme.space[4]};
   padding-right: ${p => p.theme.space[0]};
@@ -14,7 +14,7 @@ export const ContactFilterForm = styled.label`
   border-bottom-left-radius: ${p => p.theme.radii.ml};
   border-bottom-right-radius: ${p => p.theme.radii.ml};
 
-  width: ${p => p.theme.sizes.width.container};
+  width: ${p => p.theme.sizes.width.semicontainer};
 
   display: flex;
   flex-direction: column;

@@ -16,7 +16,8 @@ export const theme = {
   },
   sizes: {
     width: {
-      container: '600px',
+      container: '820px',
+      semicontainer: '402px',
       inputForm: '200px',
       statusUser: 'calc(100% / 3)',
       statusSpan: '20px',
@@ -29,13 +30,14 @@ export const theme = {
     },
     height: {
       container: 'fit-content',
+      bar: '60px',
       inputForm: '26px',
       statusUser: '80px',
       statusSpan: '20px',
       totalItem: '60px',
       statisticUser: '60px',
       avatar: '150px',
-      friendsItem: '80px',
+      contactItem: '40px',
       tableHead: '35px',
       tableData: '25px',
       buttonM: '30px',
@@ -65,9 +67,9 @@ export const theme = {
     xs: 12,
     s: 14,
     m: 16,
-    ml: 24,
-    l: 32,
-    xl: 64,
+    ml: 20,
+    l: 24,
+    xl: 32,
   },
   fontWeights: {
     normal: 400,

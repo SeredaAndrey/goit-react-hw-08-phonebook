@@ -1,24 +1,27 @@
 import styled from '@emotion/styled';
 
 export const ContactDetailsContainer = styled.div`
+  position: absolute;
+  top: ${p => p.theme.space[0]};
+  left: ${p => p.theme.sizes.width.semicontainer};
+
   display: flex;
 
   flex-direction: column;
 
   margin-top: ${p => p.theme.space[0]};
-  margin-right: auto;
-  margin-bottom: ${p => p.theme.space[4]};
-  margin-left: auto;
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[4]};
 
   padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};
   padding-bottom: ${p => p.theme.space[0]};
   padding-left: ${p => p.theme.space[0]};
 
-  width: ${p => p.theme.sizes.width.container};
+  width: ${p => p.theme.sizes.width.semicontainer};
 
-  border-bottom-left-radius: ${p => p.theme.radii.ml};
-  border-bottom-right-radius: ${p => p.theme.radii.ml};
+  border-radius: ${p => p.theme.radii.ml};
 
   align-items: center;
 

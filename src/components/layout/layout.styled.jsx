@@ -4,14 +4,14 @@ export const LayoutContainer = styled.div`
   width: ${p => p.theme.sizes.width.container};
   height: ${p => p.theme.sizes.height.container};
 
-  margin-top: ${p => p.theme.space[5]};
+  margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[9]};
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: ${p => p.theme.space[9]};
 
   border-radius: ${p => p.theme.radii.normal};
 `;
-export const LayoutTitle = styled.h1`
+export const LayoutTitle = styled.h2`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};

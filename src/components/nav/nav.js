@@ -1,12 +1,13 @@
-import { NavTitle, NavLinkContainer } from './nav.styled';
+import { NavPrimaryContainer, NavTitle, NavLinkContainer } from './nav.styled';
 import { Suspense } from 'react';
 
 import { NavLink, Outlet } from 'react-router-dom';
 
 export default function Nav() {
   return (
-    <>
+    <NavPrimaryContainer>
       <NavTitle>Contacts phonebook</NavTitle>
+
       <NavLinkContainer>
         <NavLink to="filter">Search contact</NavLink>
         <NavLink to="add">Add contact</NavLink>
@@ -14,6 +15,6 @@ export default function Nav() {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </NavPrimaryContainer>
   );
 }
