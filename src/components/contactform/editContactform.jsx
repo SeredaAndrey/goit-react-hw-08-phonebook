@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { editContact } from 'redux/operations';
 
 import shortid from 'shortid';
 import {
-  AddContactInputForm,
+  EditContactInputForm,
   LabelFormContainer,
   LabelForm,
   InputForm,
   AddButon,
+  ContactInputFormTitle,
 } from './contactform.styled';
 
-export default function AddContactForm() {
+export default function EditContactForm() {
+  const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items } = useSelector(getContacts);
 
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const initialValue = () => {
+    const index = items.findIndex(contacts => contacts.id === params.id);
+    return items[index];
+  };
+
+  const [name, setName] = useState(() => initialValue().name);
+  const [number, setNumber] = useState(() => initialValue().number);
 
   const nameInputId = shortid.generate();
   const numberInputId = shortid.generate();
@@ -34,24 +41,13 @@ export default function AddContactForm() {
   };
 
   const handleSubmit = event => {
+    const contactId = params.id;
     event.preventDefault();
 
-    let flag = false;
-    if (items && items !== []) {
-      for (const contact of items) {
-        if (contact.name === name) {
-          alert(`${name} is alredy in contacts`);
-          flag = true;
-          break;
-        }
-      }
-    }
-    if (!flag) {
-      dispatch(addContact({ name, number }));
-    }
+    dispatch(editContact({ contactId, name, number }));
 
     formReset();
-    navigate('/contacts/filter');
+    navigate(-1);
   };
 
   const formReset = () => {
@@ -60,7 +56,8 @@ export default function AddContactForm() {
   };
 
   return (
-    <AddContactInputForm onSubmit={handleSubmit}>
+    <EditContactInputForm onSubmit={handleSubmit}>
+      <ContactInputFormTitle>Edit contact</ContactInputFormTitle>
       <LabelFormContainer>
         <LabelForm htmlFor={nameInputId}>
           name
@@ -90,7 +87,7 @@ export default function AddContactForm() {
           />
         </LabelForm>
       </LabelFormContainer>
-      <AddButon type="submit">Add contact</AddButon>
-    </AddContactInputForm>
+      <AddButon type="submit">Edit contact</AddButon>
+    </EditContactInputForm>
   );
 }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ContactInputForm = styled.form`
+export const AddContactInputForm = styled.form`
   margin-top: ${p => p.theme.space[0]};
   margin-right: auto;
   margin-bottom: ${p => p.theme.space[0]};
@@ -23,6 +23,50 @@ export const ContactInputForm = styled.form`
 
   background-color: ${p => p.theme.color.background};
 `;
+export const EditContactInputForm = styled.form`
+  position: absolute;
+
+  margin-top: ${p => p.theme.space[4]};
+  margin-right: a ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[4]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[4]};
+  padding-left: ${p => p.theme.space[0]};
+
+  top: ${p => p.theme.sizes.height.friendsItem};
+  right: 0;
+
+  width: ${p => p.theme.sizes.width.semicontainer};
+
+  border-radius: ${p => p.theme.radii.ml};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: ${p => p.theme.color.background};
+`;
+
+export const ContactInputFormTitle = styled.h3`
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[4]};
+  margin-bottom: ${p => p.theme.space[3]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  font-family: ${p => p.theme.fonts.heading};
+  font-size: ${p => p.theme.fontSizes.ml}px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+`;
+
 export const LabelFormContainer = styled.div`
   display: flex;
   flex-direction: column;

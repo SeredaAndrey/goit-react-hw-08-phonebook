@@ -44,3 +44,19 @@ export const addContact = createAsyncThunk(
     }
   }
 );
+
+export const editContact = createAsyncThunk(
+  'contacts/editContacts',
+  async ({ contactId, name, number }, thunkAPI) => {
+    try {
+      const responce = await axios.put(`/contacts/${contactId}`, {
+        name,
+        number,
+      });
+
+      return responce.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
