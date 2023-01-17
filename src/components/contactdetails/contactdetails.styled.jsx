@@ -85,11 +85,8 @@ export const ContactDetailsMore = styled.p`
   font-size: ${p => p.theme.fontSizes.ml}px;
   font-weight: ${p => p.theme.fontWeights.normal};
 `;
-export const BackButon = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
+export const DelButon = styled.button`
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};
