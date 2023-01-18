@@ -30,6 +30,7 @@ export const theme = {
     },
     height: {
       container: 'fit-content',
+      usermenu: '250px',
       bar: '60px',
       inputForm: '26px',
       statusUser: '80px',

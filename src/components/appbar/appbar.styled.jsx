@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const BarContainer = styled.header`
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   margin-top: ${p => p.theme.space[0]};

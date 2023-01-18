@@ -1,33 +1,40 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 
-import { Layout } from './layout/layout';
-import Nav from './nav/nav';
+import { AppPrimaryContainer } from './app.styled';
+
+import Contact from './contact/contact';
 import Filter from './filter/filter';
 import ContactList from './contactlist/contactlist';
+import AppBar from './appbar/appbar';
+import Login from './login/login';
+import Register from './register/register';
+// const Register = lazy(() => import('./register/'));
 const EditContactForm = lazy(() => import('./contactform/editContactform'));
 const AddContactForm = lazy(() => import('./contactform/addContactform'));
 const ContactDetails = lazy(() => import('./contactdetails/contactdetails'));
 
 export const App = () => {
   return (
-    <>
+    <AppPrimaryContainer>
+      <AppBar />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="contacts" element={<Nav />}>
-            <Route path="filter" element={<Filter />}>
-              <Route path="" element={<ContactList />}>
-                <Route path=":id" element={<ContactDetails />}>
-                  <Route path="edit" element={<EditContactForm />} />
-                </Route>
-                <Route path="*" element={<div>page not found</div>} />
+        <Route exact path="/" element={<div>start page</div>} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="contacts" element={<Contact />}>
+          <Route path="filter" element={<Filter />}>
+            <Route path="" element={<ContactList />}>
+              <Route path=":id" element={<ContactDetails />}>
+                <Route path="edit" element={<EditContactForm />} />
               </Route>
+              <Route path="*" element={<div>page not found</div>} />
             </Route>
-            <Route path="add" element={<AddContactForm />} />
           </Route>
+          <Route path="add" element={<AddContactForm />} />
         </Route>
         <Route path="*" element={<div>page not found</div>} />
       </Routes>
-    </>
+    </AppPrimaryContainer>
   );
 };

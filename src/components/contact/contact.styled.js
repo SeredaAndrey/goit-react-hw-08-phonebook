@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const NavPrimaryContainer = styled.div`
+export const ContactPrimaryContainer = styled.div`
   position: relative;
 
   margin-top: ${p => p.theme.space[0]};
@@ -16,11 +16,11 @@ export const NavPrimaryContainer = styled.div`
   width: ${p => p.theme.sizes.width.container};
 `;
 
-export const NavTitle = styled.h2`
+export const ContactTitle = styled.h2`
   display: none;
 `;
 
-export const NavLinkContainer = styled.div`
+export const ContactLinkContainer = styled.div`
   display: flex;
 
   justify-content: space-evenly;
