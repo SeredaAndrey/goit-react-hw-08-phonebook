@@ -1,19 +1,28 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { logOut } from 'redux/authOperations';
+import authSelectors from 'redux/authSelector';
+
+import { UserMenuTitle, ExitButton } from './usermenu.styled';
+
 const UserMenu = () => {
+  const name = useSelector(authSelectors.getUsername);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
     <>
-      <h2>User</h2>
-      <button
+      <UserMenuTitle>Welcome, {name}</UserMenuTitle>
+      <ExitButton
         type="button"
         onClick={() => {
-          navigate(-1);
+          dispatch(logOut());
+          navigate('/');
         }}
       >
         Exit
-      </button>
+      </ExitButton>
     </>
   );
 };

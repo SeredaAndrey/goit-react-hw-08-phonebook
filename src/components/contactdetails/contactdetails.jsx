@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios';
+// import axios from 'axios';
 import { useState, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Outlet } from 'react-router-dom';
@@ -18,18 +18,18 @@ import {
   RedactButon,
   ButtonContainer,
 } from './contactdetails.styled';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const ContactDetails = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
-  const [Details, setDetails] = useState([]);
+  // const [Details, setDetails] = useState([]);
   const { items } = useSelector(getContacts);
 
-  useEffect(() => {
-    getContactForId();
-  }, [dispatch, params, items]);
+  // useEffect(() => {
+  //   dispatch(getContactForId());
+  // }, [dispatch, params, items]);
 
   const onDeleteContact = () => {
     dispatch(deleteContact(params.id));
@@ -42,22 +42,31 @@ const ContactDetails = () => {
   };
 
   const getContactForId = async () => {
-    try {
-      const responce = await axios.get(`/contacts/${params.id}`);
-      setDetails(responce.data);
-    } catch (error) {
-      return error.message;
-    }
+    return items.filter(item => item.id === params.id);
   };
+
+  //  const fetchContactsById = createAsyncThunk(
+  //   'contacts/fetchAll',
+  //   async thunkAPI => {
+  //     try {
+  //       const responce = await axios.get('/contacts');
+  //       return responce.data;
+  //     } catch (error) {
+  //       return thunkAPI.rejectWithValue(error.message);
+  //     }
+  //   }
+  // );
 
   return (
     <ContactPrimariContainer>
       <ContactDetailsContainer>
         <ContactDetailsName>Contact details</ContactDetailsName>
 
-        <ContactAvatar src={avatarDefault} alt={Details.name} />
-        <ContactDetailsName>name: {Details.name}</ContactDetailsName>
-        <ContactDetailsMore>number: {Details.number}</ContactDetailsMore>
+        <ContactAvatar src={avatarDefault} alt={getContactForId().name} />
+        <ContactDetailsName>name: {getContactForId().name}</ContactDetailsName>
+        <ContactDetailsMore>
+          number: {getContactForId().number}
+        </ContactDetailsMore>
 
         <ButtonContainer>
           <RedactButon type="button" onClick={() => onEditContact()}>

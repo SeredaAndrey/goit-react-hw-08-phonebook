@@ -3,15 +3,44 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 export const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
-    console.log(data);
+    token.set(data.token);
     return data;
   } catch (error) {
     return error.message;
   }
 });
 
-//token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M4NDFhOWM4NWMyYzAwMTZkYjJhMWYiLCJpYXQiOjE2NzQwNjgzOTN9.Wev4y0cTjqy4vJH91cQ1t5fgBU9BdEUeid4lfIPF4p0;
+export const logIn = createAsyncThunk('auth/login', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
+
+export const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    return error.message;
+  }
+});
+
 //andreys / andrey.s@mail.com / andrey00560215
+
+//poipoipoi / poilkjmnb@po.com / qweasd123

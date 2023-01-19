@@ -2,7 +2,15 @@ import { useState } from 'react';
 import shortid from 'shortid';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/authOperations';
-import { RegisterContainer, RegisterTitle } from './register.styled';
+import {
+  RegisterContainer,
+  RegisterTitle,
+  RegisterForm,
+  RegisterLabel,
+  RegisterLabelContainer,
+  RegisterButton,
+  RegisterInput,
+} from './register.styled';
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -38,39 +46,41 @@ export default function Register() {
   return (
     <RegisterContainer>
       <RegisterTitle>Registration page</RegisterTitle>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label htmlFor={nameInputId}>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            id={nameInputId}
-          />
-        </label>
-        <label htmlFor={emailInputId}>
-          E-mail
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            id={emailInputId}
-          />
-        </label>
-        <label htmlFor={passwordInputId}>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            id={passwordInputId}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <RegisterForm onSubmit={handleSubmit} autoComplete="off">
+        <RegisterLabelContainer>
+          <RegisterLabel htmlFor={nameInputId}>
+            Name
+            <RegisterInput
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              id={nameInputId}
+            />
+          </RegisterLabel>
+          <RegisterLabel htmlFor={emailInputId}>
+            E-mail
+            <RegisterInput
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              id={emailInputId}
+            />
+          </RegisterLabel>
+          <RegisterLabel htmlFor={passwordInputId}>
+            Password
+            <RegisterInput
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              id={passwordInputId}
+            />
+          </RegisterLabel>
+        </RegisterLabelContainer>
+        <RegisterButton type="submit">Submit</RegisterButton>
+      </RegisterForm>
     </RegisterContainer>
   );
 }

@@ -9,7 +9,7 @@ import ContactList from './contactlist/contactlist';
 import AppBar from './appbar/appbar';
 import Login from './login/login';
 import Register from './register/register';
-// const Register = lazy(() => import('./register/'));
+// const Login = lazy(() => import('./login/login'));
 const EditContactForm = lazy(() => import('./contactform/editContactform'));
 const AddContactForm = lazy(() => import('./contactform/addContactform'));
 const ContactDetails = lazy(() => import('./contactdetails/contactdetails'));
