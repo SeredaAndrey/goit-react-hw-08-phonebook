@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import shortid from 'shortid';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/authOperations';
+import operations from '../../redux/authOperations';
 import {
   RegisterContainer,
   RegisterTitle,
@@ -37,7 +37,7 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
+    dispatch(operations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');

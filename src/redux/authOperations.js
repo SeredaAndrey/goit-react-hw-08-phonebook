@@ -12,7 +12,7 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk('auth/register', async credentials => {
+const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
@@ -22,7 +22,7 @@ export const register = createAsyncThunk('auth/register', async credentials => {
   }
 });
 
-export const logIn = createAsyncThunk('auth/login', async credentials => {
+const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
@@ -32,7 +32,7 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
-export const logOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
@@ -40,6 +40,23 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     return error.message;
   }
 });
+
+const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  const persistedToken = thunkAPI.getState().auth.token;
+  if (token === null) {
+    return thunkAPI.rejectWithValue();
+  }
+  token.set(persistedToken);
+  try {
+    const { data } = await axios.get('users/current');
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
+
+const authOperations = { register, logIn, logOut, refreshUser };
+export default authOperations;
 
 //andreys / andrey.s@mail.com / andrey00560215
 

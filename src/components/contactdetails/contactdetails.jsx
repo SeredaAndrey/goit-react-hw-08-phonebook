@@ -30,7 +30,6 @@ const ContactDetails = () => {
   };
 
   const onEditContact = () => {
-    // dispatch(editContact(params.id));
     navigate('edit');
   };
 

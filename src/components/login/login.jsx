@@ -12,7 +12,7 @@ import {
   LoginInput,
   LoginButton,
 } from './login.styled';
-import { logIn } from 'redux/authOperations';
+import authOperations from 'redux/authOperations';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -35,10 +35,10 @@ export default function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
-    navigate('/contacts');
+    navigate('/contacts/filter');
   };
 
   return (

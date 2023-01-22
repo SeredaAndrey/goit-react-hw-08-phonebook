@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { logOut } from 'redux/authOperations';
+import authOperations from 'redux/authOperations';
 import authSelectors from 'redux/authSelector';
 
 import { UserMenuTitle, ExitButton } from './usermenu.styled';
@@ -17,7 +17,7 @@ const UserMenu = () => {
       <ExitButton
         type="button"
         onClick={() => {
-          dispatch(logOut());
+          dispatch(authOperations.logOut());
           navigate('/');
         }}
       >
