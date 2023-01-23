@@ -11,6 +11,7 @@ import ContactList from './contactlist/contactlist';
 import AppBar from './appbar/appbar';
 import Login from './login/login';
 import Register from './register/register';
+import PrivateRoute from './PrivatRoute';
 const EditContactForm = lazy(() => import('./contactform/editContactform'));
 const AddContactForm = lazy(() => import('./contactform/addContactform'));
 const ContactDetails = lazy(() => import('./contactdetails/contactdetails'));
@@ -30,17 +31,23 @@ export const App = () => {
           <Route exact path="/" element={<div>start page</div>} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="contacts" element={<Contact />}>
-            <Route path="filter" element={<Filter />}>
-              <Route path="" element={<ContactList />}>
-                <Route path=":id" element={<ContactDetails />}>
-                  <Route path="edit" element={<EditContactForm />} />
+
+          <PrivateRoute path="contacts">
+            <Contact>
+              {/* <Route path="contacts" element={<Contact />}> */}
+              <Route path="filter" element={<Filter />}>
+                <Route path="" element={<ContactList />}>
+                  <Route path=":id" element={<ContactDetails />}>
+                    <Route path="edit" element={<EditContactForm />} />
+                  </Route>
+                  <Route path="*" element={<div>page not found</div>} />
                 </Route>
-                <Route path="*" element={<div>page not found</div>} />
               </Route>
-            </Route>
-            <Route path="add" element={<AddContactForm />} />
-          </Route>
+              <Route path="add" element={<AddContactForm />} />
+              {/* </Route> */}
+            </Contact>
+          </PrivateRoute>
+
           <Route path="*" element={<div>page not found</div>} />
         </Routes>
       </AppPrimaryContainer>
