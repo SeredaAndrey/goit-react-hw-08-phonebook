@@ -33,7 +33,7 @@ export const App = () => {
             path="/"
             element={
               <PublicRoute
-                redirectTo="/contacts"
+                redirectTo="/contacts/filter"
                 component={<div>start page</div>}
               />
             }
@@ -41,36 +41,38 @@ export const App = () => {
           <Route
             path="/register"
             element={
-              <PublicRoute redirectTo="/contacts" component={<Register />} />
+              <PublicRoute
+                redirectTo="/contacts/filter"
+                component={<Register />}
+              />
             }
           />
           <Route
             path="/login"
             element={
-              <PublicRoute redirectTo="/contacts" component={<Login />} />
+              <PublicRoute
+                redirectTo="/contacts/filter"
+                component={<Login />}
+              />
             }
           />
           <Route
             path="/contacts"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={
-                  <Contact>
-                    <Route path="filter" element={<Filter />}>
-                      <Route path="" element={<ContactList />}>
-                        <Route path=":id" element={<ContactDetails />}>
-                          <Route path="edit" element={<EditContactForm />} />
-                        </Route>
-                        <Route path="*" element={<div>page not found</div>} />
-                      </Route>
-                    </Route>
-                    <Route path="add" element={<AddContactForm />} />
-                  </Contact>
-                }
-              />
+              <PrivateRoute redirectTo="/login" component={<Contact />} />
             }
-          />
+          >
+            <Route path="filter" element={<Filter />}>
+              <Route path="" element={<ContactList />}>
+                <Route path=":id" element={<ContactDetails />}>
+                  <Route path="edit" element={<EditContactForm />} />
+                </Route>
+                <Route path="*" element={<div>page not found</div>} />
+              </Route>
+            </Route>
+            <Route path="add" element={<AddContactForm />} />
+          </Route>
+
           <Route path="*" element={<div>page not found</div>} />
         </Routes>
       </AppPrimaryContainer>
