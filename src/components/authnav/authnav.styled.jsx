@@ -24,8 +24,8 @@ export const AuthNavButtonContainer = styled.div`
   display: flex;
   > a {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
 
     margin-top: ${p => p.theme.space[0]};
     margin-right: ${p => p.theme.space[4]};

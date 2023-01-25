@@ -1,9 +1,14 @@
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { BiSearchAlt } from 'react-icons/bi';
 // import { useSearchParams } from 'react-router-dom';
 
-import { ContactFilterForm, FilterInputForm } from './filter.styled';
+import {
+  ContactFilterForm,
+  FilterInputForm,
+  FilterSpan,
+} from './filter.styled';
 import { setFilterContent } from 'redux/filterSlice';
 import { Outlet } from 'react-router-dom';
 import { getFilterContent } from 'redux/selectors';
@@ -23,7 +28,9 @@ const Filter = () => {
   return (
     <>
       <ContactFilterForm htmlFor={searchFormId}>
-        Find contacts by Name
+        <FilterSpan>
+          <BiSearchAlt /> Find contacts by Name
+        </FilterSpan>
         <FilterInputForm
           type="text"
           id={searchFormId}

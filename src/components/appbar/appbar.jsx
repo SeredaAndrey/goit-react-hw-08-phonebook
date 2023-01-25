@@ -1,5 +1,6 @@
 import { BarContainer, BarTitle } from './appbar.styled';
 import { useSelector } from 'react-redux';
+import { FaAddressBook } from 'react-icons/fa';
 
 import AuthNav from 'components/authnav/authnav';
 import UserMenu from 'components/usermenu/usermenu';
@@ -10,7 +11,9 @@ const AppBar = () => {
 
   return (
     <BarContainer>
-      <BarTitle>Contact phonebook</BarTitle>
+      <BarTitle>
+        <FaAddressBook /> Contact phonebook
+      </BarTitle>
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </BarContainer>
   );

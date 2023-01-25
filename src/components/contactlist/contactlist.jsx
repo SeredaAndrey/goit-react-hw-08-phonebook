@@ -8,7 +8,11 @@ import { getFilterContent, getContacts } from 'redux/selectors';
 
 import ContactItem from 'components/contactitem/contactitem';
 
-import { ContactListContainer, ContactListMesage } from './contactlist.styled';
+import {
+  ContactListPrimaryContainer,
+  ContactListContainer,
+  ContactListMesage,
+} from './contactlist.styled';
 import { Outlet } from 'react-router-dom';
 
 const ContactList = () => {
@@ -29,7 +33,7 @@ const ContactList = () => {
   };
 
   return (
-    <>
+    <ContactListPrimaryContainer>
       {isLoading && <ContactListMesage>Loading contacts...</ContactListMesage>}
       {error && <ContactListMesage>{error}</ContactListMesage>}
       {items.length !== 0 && (
@@ -42,7 +46,7 @@ const ContactList = () => {
       <Suspense fallback={<ContactListMesage>Loading...</ContactListMesage>}>
         <Outlet />
       </Suspense>
-    </>
+    </ContactListPrimaryContainer>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { MdPersonAdd } from 'react-icons/md';
 
 import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
@@ -90,7 +91,9 @@ export default function AddContactForm() {
           />
         </LabelForm>
       </LabelFormContainer>
-      <AddButon type="submit">Add contact</AddButon>
+      <AddButon type="submit">
+        <MdPersonAdd /> Add contact
+      </AddButon>
     </AddContactInputForm>
   );
 }

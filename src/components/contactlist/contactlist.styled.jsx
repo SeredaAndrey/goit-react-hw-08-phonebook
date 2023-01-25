@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
-export const ContactListContainer = styled.ul`
+export const ContactListPrimaryContainer = styled.div`
   display: flex;
-  flex-direction: column;
 
   margin-top: ${p => p.theme.space[0]};
   margin-right: auto;
@@ -15,6 +14,23 @@ export const ContactListContainer = styled.ul`
   padding-left: ${p => p.theme.space[0]};
 
   width: ${p => p.theme.sizes.width.container};
+`;
+
+export const ContactListContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+
+  margin-top: ${p => p.theme.space[0]};
+  margin-right: ${p => p.theme.space[0]};
+  margin-bottom: ${p => p.theme.space[0]};
+  margin-left: ${p => p.theme.space[0]};
+
+  padding-top: ${p => p.theme.space[0]};
+  padding-right: ${p => p.theme.space[0]};
+  padding-bottom: ${p => p.theme.space[0]};
+  padding-left: ${p => p.theme.space[0]};
+
+  width: ${p => p.theme.sizes.width.semicontainer};
 `;
 
 export const ContactListMesage = styled.p`

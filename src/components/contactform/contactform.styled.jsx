@@ -6,12 +6,13 @@ export const AddContactInputForm = styled.form`
   margin-bottom: ${p => p.theme.space[0]};
   margin-left: auto;
 
-  padding-top: ${p => p.theme.space[4]};
+  padding-top: ${p => p.theme.space[0]};
   padding-right: ${p => p.theme.space[0]};
-  padding-bottom: ${p => p.theme.space[4]};
+  padding-bottom: ${p => p.theme.space[0]};
   padding-left: ${p => p.theme.space[0]};
 
   width: ${p => p.theme.sizes.width.container};
+  height: ${p => p.theme.sizes.height.userForm};
 
   border-top-right-radius: ${p => p.theme.radii.ml};
   border-bottom-left-radius: ${p => p.theme.radii.ml};
@@ -122,6 +123,10 @@ export const InputForm = styled.input`
   color: ${p => p.theme.color.primary};
 `;
 export const AddButon = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[0]};
   margin-bottom: ${p => p.theme.space[0]};

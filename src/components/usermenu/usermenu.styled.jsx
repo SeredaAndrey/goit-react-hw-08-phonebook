@@ -21,6 +21,10 @@ export const UserMenuTitle = styled.h2`
 `;
 
 export const ExitButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
   margin-top: ${p => p.theme.space[0]};
   margin-right: ${p => p.theme.space[4]};
   margin-bottom: ${p => p.theme.space[0]};

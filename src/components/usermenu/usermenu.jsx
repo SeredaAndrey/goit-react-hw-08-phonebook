@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ImExit } from 'react-icons/im';
 
 import authOperations from 'redux/authOperations';
 import authSelectors from 'redux/authSelector';
@@ -21,7 +22,7 @@ const UserMenu = () => {
           navigate('/');
         }}
       >
-        Exit
+        <ImExit /> Exit
       </ExitButton>
     </>
   );

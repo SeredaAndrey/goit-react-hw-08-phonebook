@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ContactPrimariContainer = styled.div`
-  position: absolute;
-  top: ${p => p.theme.space[0]};
+  // position: absolute;
+  top: ${p => p.theme.sizes.height.userForm};
   left: ${p => p.theme.sizes.width.semicontainer};
 
   margin-top: ${p => p.theme.space[0]};
